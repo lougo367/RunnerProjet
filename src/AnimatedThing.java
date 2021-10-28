@@ -14,7 +14,9 @@ public abstract class AnimatedThing {
     private int maxIndex;
 
 
-    //files
+    public ImageView getSprite() { return sprite; }
+
+    //sprite
     private ImageView sprite;
     private Image spriteSheet;
     private int frameOffset;
@@ -28,6 +30,7 @@ public abstract class AnimatedThing {
         spriteSheet = new Image(spriteFileName);
         sprite = new ImageView(spriteSheet);
         sprite.setViewport(new Rectangle2D(20,15,68,80));
+
 
     }
 }
