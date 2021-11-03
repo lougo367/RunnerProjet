@@ -6,13 +6,14 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class GameScene extends Scene {
+
     private Camera camera;
     private static int wWindow;
     private static int hWindow;
     private static int numberOfLives;
-    private staticThing bckgrnd;
+    private staticThing bckRight;
+    private staticThing bckLeft;
     private Group root;
-    private Scene scene;
 
     public int getwWindow() {
         return wWindow;
@@ -22,13 +23,11 @@ public class GameScene extends Scene {
         return hWindow;
     }
 
-    public void render(Stage primaryStage){
-        primaryStage.setTitle("Demo");
 
 
-        primaryStage.setScene(this);
-        root.getChildren().add(this.bckgrnd.getView());//ajoute une image à la scène à la racine : voir graphe sujet figure 1
-        primaryStage.show();
+    public void render(){//modification du nom
+        this.root.getChildren().add(this.bckLeft.getView());//ajoute une image à la scène à la racine : voir graphe sujet figure 1
+        this.root.getChildren().add(this.bckRight.getView());
     }
     public GameScene(Group g,int height, int width){// Group groupe d'éléments affichables propres à javafx
         super(g,width,height);
@@ -36,8 +35,10 @@ public class GameScene extends Scene {
         this.numberOfLives = 3;
         this.hWindow = height;
         this.wWindow = width;
-        this.bckgrnd = new staticThing("src/desert.png",0,0);
+        this.bckLeft = new staticThing("desert.png",0,0,800,400);
+        this.bckRight = new staticThing("desert.png",800,0,800,400);
         this.root = g;
-        //modification
+
+
     }
 }
