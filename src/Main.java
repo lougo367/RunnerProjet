@@ -13,7 +13,17 @@ public class Main extends Application {
 
     public void start(Stage primaryStage){
         Group root = new Group();
-        GameScene scene = new GameScene(root,windowHeight,windowWidth);
+        Image icon = new Image("icon.png");
+
+        primaryStage.getIcons().add(icon);
+        primaryStage.setTitle("Demo du jeu");
+
+        GameScene Gscene = new GameScene(root,windowHeight,windowWidth);
+
+
+        primaryStage.setScene(Gscene);
+        Gscene.render();
+        primaryStage.show();
 
     }
     public static void main(String[] args) {
