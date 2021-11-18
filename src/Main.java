@@ -19,7 +19,10 @@ public class Main extends Application {
         primaryStage.setTitle("Demo du jeu");
 
         GameScene Gscene = new GameScene(root,windowHeight,windowWidth);
-
+        //Test caméra
+        //Gscene.camera.setX(236);
+        //Gscene.camera.setY(0);
+        //END Test caméra : Test concluant
 
         primaryStage.setScene(Gscene);
         Gscene.render();

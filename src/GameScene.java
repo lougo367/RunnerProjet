@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -9,13 +10,23 @@ import java.io.Serial;
 
 public class GameScene extends Scene {
 
-    private Camera camera;
-    private static int wWindow;
-    private static int hWindow;
+    Camera camera;
+    private static int wWindow = 800;
+    private static int hWindow = 400;
     private static int numberOfLives;
     private staticThing bckRight;
     private staticThing bckLeft;
     private Group root;
+    // Paramètres pour la gestion de la caméra
+    private int xR;
+    private int yR = 0;
+    private int wRight;
+    private int hRight = hWindow;
+    private int xL;
+    private int yL = 0;
+    private int wLeft;
+    private int hLeft = hWindow;
+
 
     public int getwWindow() {
         return wWindow;
@@ -28,6 +39,32 @@ public class GameScene extends Scene {
 
 
     public void render(){//modification du nom
+        if (camera.getX() == 800){camera.setX(0);}// Voir remarque ci-dessous
+        //Caméra
+        // Déterminer les paramètres de la caméra
+        //Paramètres pour la partie gauche
+        xL = camera.getX();
+        yL = camera.getY();
+        wLeft = wWindow - camera.getX();
+        //System.out.println(wLeft);//contrôle
+        hLeft = hWindow;
+        // Paramètres pour la partie droite
+        xR = 0;
+        yR = 0;
+        wRight = camera.getX();
+        //System.out.println(wRight);//contrôle
+        hRight = hWindow;
+        //Remarque importante : la camera devra reboucler à 0 avant d'atteindre la valeur camera.getX() = 800.
+        //END Caméra
+
+        // Accollement des deux backgrounds
+        bckRight.getView().setX(wWindow-camera.getX());
+
+
+        this.bckRight.getView().setViewport(new Rectangle2D(xR,yR,wRight,hRight));
+        this.bckLeft.getView().setViewport(new Rectangle2D(xL,yL,wLeft,wLeft));
+
+        // Finalisation du rendu
         this.root.getChildren().addAll(this.bckLeft.getView());//ajoute une image à la scène à la racine : voir graphe sujet figure 1
         this.root.getChildren().addAll(this.bckRight.getView());
     }

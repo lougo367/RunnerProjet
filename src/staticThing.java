@@ -7,8 +7,8 @@ public class staticThing {
     private ImageView view;
 
     public ImageView getView() {
-        view.setX(x);
-        view.setY(y);
+        //view.setX(x);
+        //view.setY(y);
         return view;
     }
     public int getX() {return x;}
