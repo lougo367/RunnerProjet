@@ -20,9 +20,11 @@ public class Main extends Application {
 
         GameScene Gscene = new GameScene(root,windowHeight,windowWidth);
         //Test caméra
-        //Gscene.camera.setX(236);
-        //Gscene.camera.setY(0);
+        Gscene.camera.setX(700);
+        Gscene.camera.setY(0);
         //END Test caméra : Test concluant
+
+
 
         primaryStage.setScene(Gscene);
         Gscene.render();
